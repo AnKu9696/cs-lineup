@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Container, HStack } from '@chakra-ui/react';
+import '@vidstack/react/player/styles/default/layouts/video.css';
+import '@vidstack/react/player/styles/default/theme.css';
+import csMaps from 'assets/maps.jpg';
+import { Outlet } from 'react-router-dom';
+import MapSideBar from 'views/MapSideBar';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box
+      h='calc(100vh)'
+      bgImage={csMaps}
+      bgPosition='center'
+      bgSize='cover'
+      bgRepeat='no-repeat'
+    >
+      <Box
+        backgroundColor='rgba(0, 0, 0, 0.1)'
+        w='100%'
+        h='100%'
+        zIndex='0'
+        position='absolute'
+      />
+      <Container
+        minW='min-content'
+        paddingTop='20px'
+      >
+        <HStack
+          borderRadius='20px'
+          border='1px solid black'
+          bg='rgba(189, 195, 199, 0.6)'
+          alignItems='start'
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <MapSideBar />
+          <Outlet />
+        </HStack>
+      </Container>
+    </Box>
   );
-}
+};
 
 export default App;
